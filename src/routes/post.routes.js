@@ -10,10 +10,12 @@ import {
 
 const router = express.Router();
 
-router.post("/", verifyJwt, createPost);
-router.get("/", verifyJwt, getUserPosts);
-router.get("/:id", verifyJwt, getPostById);
-router.put("/:id", verifyJwt, updatePost);
-router.delete("/:id", verifyJwt, deletePost);
+router.use(verifyJwt);
+
+router.post("/", createPost);
+router.get("/", getUserPosts);
+router.get("/:id", getPostById);
+router.put("/:id", updatePost);
+router.delete("/:id", deletePost);
 
 export default router;
